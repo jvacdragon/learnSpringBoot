@@ -8,10 +8,10 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-public class UserResource {
+public class UserController {
 
     UserDaoService userService;
-    public UserResource(UserDaoService userService){
+    public UserController(UserDaoService userService){
         this.userService = userService;
     }
     @GetMapping(path = "/users")
@@ -23,7 +23,7 @@ public class UserResource {
         User findedUser = userService.findOne(id);
 
         if(findedUser == null){
-            throw new UserNotFoundException("id: " + id);
+            throw new UserNotFoundException("id " + id + " não encontrada");
         }
 
         return findedUser;
@@ -36,7 +36,7 @@ public class UserResource {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(savedUser.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+                .toUri(); //direcionar url para o objeto criado
+        return ResponseEntity.created(location).build(); //responder com status de created (201)
     }
 }

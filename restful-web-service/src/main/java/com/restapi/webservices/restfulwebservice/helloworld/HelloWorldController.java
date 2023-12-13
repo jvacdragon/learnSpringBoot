@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class HelloWorld {
+public class HelloWorldController {
 
     @GetMapping(path="/hello-world-list")
     public List<String> helloWorldLis(){
