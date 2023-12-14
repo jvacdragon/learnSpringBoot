@@ -11,6 +11,7 @@ import java.util.function.Predicate;
 public class UserDaoService {
     private static List<User> usersList = new ArrayList<>();
 
+    private static int usersCount = 3;
     static{
         usersList.add(new User(1, "Joao", LocalDate.now().minusYears(20).plusDays(6).minusMonths(
                 4
@@ -23,9 +24,7 @@ public class UserDaoService {
         return usersList;
     }
     public User save(User user){
-        user.setId(4);
-        user.setName("usuario 4");
-        user.setBirthDate(LocalDate.now());
+        user.setId(++usersCount);
         usersList.add(user);
         return user;
     }
@@ -34,5 +33,9 @@ public class UserDaoService {
         //Predicate<User> predicate = user -> user.getId() == id;
         return usersList.stream().filter(user->user.getId()==id).findFirst().orElse(null);
 
+    }
+
+    public void deleteUser(long id){
+        usersList.removeIf(user -> user.getId() == id);
     }
 }
