@@ -11,13 +11,13 @@ import java.util.List;
 
 @RestController
 public class UserController {
-
     UserDaoService userService;
     public UserController(UserDaoService userService){
         this.userService = userService;
     }
     @GetMapping(path = "/users")
-    public List<User> retrieveUsers(){
+    public List<User> retrieveUsers()
+    {
         return userService.findAll();
     }
     @GetMapping("/users/{id}")
