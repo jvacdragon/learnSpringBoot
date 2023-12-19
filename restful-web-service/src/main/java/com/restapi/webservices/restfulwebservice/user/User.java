@@ -12,20 +12,22 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "user_details")
 public class User {
+
+    protected User(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @JsonIgnore
+    //@JsonIgnore
     private String password;
 
     @Size(min=3, message = "User must have at least 3 characters in their name.")
     private String name;
 
-    @JsonProperty("birth_date")
+    //@JsonProperty("birth_date") //deve tirar o json properties se tiver usando jpa
     @Past(message = "Birth date must be in the past.")
     @NotNull(message = "Birth date must not be null.")
     private LocalDate birthDate;
