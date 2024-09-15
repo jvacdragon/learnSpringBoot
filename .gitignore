@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+**/.idea/
+**/.metadata/
+**/.vscode/
+**/node_modules/
+**/.gitignore/
+
