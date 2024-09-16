@@ -1,11 +1,7 @@
 import { apiClient } from "./ApiClient";
 
 
-export const executeBasicAuthService = (token) => apiClient.get(`/basicAuth`, {
-    headers: {
-        Authorization: token
-    }
-})
+
 
 export const retrieveTaskById = (username, taskId) => apiClient.get(`/users/${username.username}/todos/${taskId}`)
 

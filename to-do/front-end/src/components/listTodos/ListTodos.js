@@ -13,7 +13,7 @@ const ListTodos = (props) => {
 
     useEffect( () => {
         refreshTasks(username)
-    }, [tasks])
+    }, [tasks, username])
     
     const refreshTasks = async (username) =>{
         try {
